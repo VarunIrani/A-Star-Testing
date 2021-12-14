@@ -1,6 +1,7 @@
 package com.stqa.astar.grid;
 
 import com.stqa.astar.cell.Cell;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -11,11 +12,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GridTest {
-	private final Grid grid = new Grid();
+	private static final Grid grid = new Grid();
 	private final Random random = new Random();
 
-	@BeforeEach
-	void setup() {
+	@BeforeAll
+	static void setup() {
 		grid.setup();
 		System.out.println("Setup Complete");
 	}
@@ -45,6 +46,7 @@ class GridTest {
 
 	@Test
 	void checkGetStart() {
+		System.out.println("Check Get Start");
 		grid.setStart(0, 0);
 		Cell cell = Grid.getStart();
 		assertTrue(cell.isStart());
@@ -52,6 +54,7 @@ class GridTest {
 
 	@Test
 	void checkSetStart() {
+		System.out.println("Check Set Start");
 		int i = random.nextInt(Grid.rows);
 		int j = random.nextInt(Grid.cols);
 		grid.setStart(i, j);
@@ -60,6 +63,7 @@ class GridTest {
 
 	@Test
 	void checkGetEnd() {
+		System.out.println("Check Get End");
 		grid.setEnd(Grid.rows - 1, Grid.cols - 1);
 		Cell cell = Grid.getEnd();
 		assertTrue(cell.isEnd());
@@ -67,6 +71,7 @@ class GridTest {
 
 	@Test
 	void checkSetEnd() {
+		System.out.println("Check Set End");
 		int i = random.nextInt(Grid.rows);
 		int j = random.nextInt(Grid.cols);
 		grid.setEnd(i, j);
